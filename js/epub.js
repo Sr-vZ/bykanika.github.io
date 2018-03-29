@@ -3970,7 +3970,7 @@ EPUBJS.Book.prototype.open = function(_url) {
       });
   }
 
-  epubPackage = this.request(this.containerUrl)
+  epubPackage
     .then(function(packageXml) {
       // Get package information from epub opf
       book.unpack(packageXml);
