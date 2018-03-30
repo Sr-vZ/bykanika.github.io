@@ -13,40 +13,33 @@
     <script src="js/epub.min.js"></script>
     <style type="text/css">
         body {
-            margin: 0;
-            background: #fafafa;
-            font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-            color: #333;
-            height: 100%;
+            overflow: auto;
+            background: #eee;
+        }
+
+        #main {
+            position: absolute;
             width: 100%;
-            /*  position: absolute; */
+            height: 100%;
+
         }
 
-        .epub-container {
-            /*      display: block;
-*/
-            /*width: 100%;*/
-            /*height: 100%;*/
-            /*      text-align: center;
-*/
-            /*position: absolute;
-      top: 0;
-      left: 0;*/
-            min-width: 320px;
+        #area {
+            width: 90%;
+            height: "100px";
+            margin: 5% auto;
+            /* max-width: 1250px; */
+            overflow-y: hidden;
+            align-items: center;
+            max-height: 80vh;
+            display: inline-block;
             margin: 0 auto;
+
         }
 
-        /*.epub-container > div {
-        padding: 0 20% 0 20%;
-      }*/
-
-        .epub-container .epub-view>iframe {
-            background: white;
-            box-shadow: 0 0 4px #ccc;
-            margin: 10px;
-            padding: 20px;
+        #area iframe {
+            border: none;
         }
-
 
         #prev {
             left: 40px;
@@ -57,7 +50,7 @@
         }
 
         .arrow {
-            position: fixed;
+            position: absolute;
             top: 50%;
             margin-top: -32px;
             font-size: 64px;
@@ -78,16 +71,31 @@
             color: #000;
         }
 
-        #toc {
-            display: block;
-            margin: 10px auto;
+        .left {
+            float: left;
+            width: 5%
+        }
+
+        .right {
+            float: right;
+            width: 5%;
+            text-align: right;
+        }
+
+        .center {
+            float: left;
+            width: 90%;
+            text-align: center;
         }
     </style>
 </head>
 
 <body>
-    <div id="viewer"></div>
-
+    <div id="main">
+        <div id="prev" onclick="move_down();" class="arrow left">‹</div>
+        <div id="area" class="center"></div>
+        <div id="next" onclick="move_up();" class="arrow right">›</div>
+    </div>
     <script>
         var currentSectionIndex = 8;
         // Load the opf
@@ -108,25 +116,15 @@
 
         // book.renderTo(document.body);
         // book.forceSingle();
-        $("#viewer").load("./books/book3_pagefixed/OEBPS/Book-3-low.xhtml");
-        // function load_home (event) {
-    //(event || window.event).preventDefault();
-//     function load_home (e) {
-//    //(e || window.event).preventDefault();
-//    var con = document.getElementById('viewer')
-//    ,   xhr = new XMLHttpRequest();
+        $("#area").load("./books/book3_pagefixed/OEBPS/Book-3-low.xhtml");
 
-//    xhr.onreadystatechange = function (e) { 
-//     if (xhr.readyState == 4 && xhr.status == 200) {
-//      con.innerHTML = xhr.responseText;
-//     }
-//    }
+        function move_up() {
+            document.getElementById('area').scrollTop += 50;
+        }
 
-//  xhr.open("GET", "./books/book3_pagefixed/OEBPS/Book-3-low.xhtml", false);
-//  xhr.setRequestHeader('Content-type', 'text/html');
-//  xhr.send();
-// }
-// } 
+        function move_down() {
+            document.getElementById('area').scrollTop -= 50;
+        }
     </script>
 
 </body>
