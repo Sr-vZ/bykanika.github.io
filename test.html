@@ -108,25 +108,25 @@
 
         // book.renderTo(document.body);
         // book.forceSingle();
-        //$("#viewer").load("./books/book3_pagefixed/OEBPS/Book-3-low.xhtml");
-        function load_home (event) {
+        $("#viewer").load("./books/book3_pagefixed/OEBPS/Book-3-low.xhtml");
+        // function load_home (event) {
     //(event || window.event).preventDefault();
-    function load_home (e) {
-   //(e || window.event).preventDefault();
-   var con = document.getElementById('viewer')
-   ,   xhr = new XMLHttpRequest();
+//     function load_home (e) {
+//    //(e || window.event).preventDefault();
+//    var con = document.getElementById('viewer')
+//    ,   xhr = new XMLHttpRequest();
 
-   xhr.onreadystatechange = function (e) { 
-    if (xhr.readyState == 4 && xhr.status == 200) {
-     con.innerHTML = xhr.responseText;
-    }
-   }
+//    xhr.onreadystatechange = function (e) { 
+//     if (xhr.readyState == 4 && xhr.status == 200) {
+//      con.innerHTML = xhr.responseText;
+//     }
+//    }
 
- xhr.open("GET", "./books/book3_pagefixed/OEBPS/Book-3-low.xhtml", false);
- xhr.setRequestHeader('Content-type', 'text/html');
- xhr.send();
-}
-} 
+//  xhr.open("GET", "./books/book3_pagefixed/OEBPS/Book-3-low.xhtml", false);
+//  xhr.setRequestHeader('Content-type', 'text/html');
+//  xhr.send();
+// }
+// } 
     </script>
 
 </body>
