@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>EPUB.js Continuous Example</title>
 
-    
+
     <script src="js/libs/jquery.min.js"></script>
 
     <script src="js/libs/zip.min.js"></script>
@@ -35,6 +35,7 @@
             min-width: 320px;
             margin: 0 auto;
         }
+
         /*.epub-container > div {
         padding: 0 20% 0 20%;
       }*/
@@ -90,11 +91,11 @@
     <script>
         var currentSectionIndex = 8;
         // Load the opf
-        var book = ePub("./books/Book 3 epub Low Res.epub");
-        var rendition = book.renderTo(document.body, { method: "continuous", width: "60%" });
+        //var book = ePub("./books/book_3_pagefixed/");
+        //var rendition = book.renderTo(document.body, { method: "pagination", width: "100%" });
         // var displayed = book.renderer.displayChapter("epubcfi(/6/14[xchapter_001]!4/2/24/2[c001p0011]/1:799)");
 
-        
+
 
         // displayed.then(function (renderer) {
         //     // -- do stuff
@@ -104,9 +105,28 @@
         // book.loaded.navigation.then(function (toc) {
         //     // console.log(toc);
         // });
-        
-        book.renderTo('viewer',{height:"10000px"});
-        book.forceSingle();
+
+        // book.renderTo(document.body);
+        // book.forceSingle();
+        //$("#viewer").load("./books/book3_pagefixed/OEBPS/Book-3-low.xhtml");
+        function load_home (event) {
+    //(event || window.event).preventDefault();
+    function load_home (e) {
+   //(e || window.event).preventDefault();
+   var con = document.getElementById('viewer')
+   ,   xhr = new XMLHttpRequest();
+
+   xhr.onreadystatechange = function (e) { 
+    if (xhr.readyState == 4 && xhr.status == 200) {
+     con.innerHTML = xhr.responseText;
+    }
+   }
+
+ xhr.open("GET", "./books/book3_pagefixed/OEBPS/Book-3-low.xhtml", false);
+ xhr.setRequestHeader('Content-type', 'text/html');
+ xhr.send();
+}
+} 
     </script>
 
 </body>
