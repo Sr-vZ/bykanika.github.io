@@ -1,0 +1,75 @@
+<?xml version='1.0' encoding='utf-8'?>
+<ncx xmlns="http://www.daisy.org/z3986/2005/ncx/" version="2005-1" xml:lang="en">
+  <head>
+    <meta content="urn:uuid:99bcbcdd-d802-419a-a2c9-c01b4e7e573f" name="dtb:uid"/>
+    <meta content="3" name="dtb:depth"/>
+    <meta content="calibre (3.20.0)" name="dtb:generator"/>
+    <meta content="0" name="dtb:totalPageCount"/>
+    <meta content="0" name="dtb:maxPageNumber"/>
+  </head>
+  <docTitle>
+    <text>book 3 low 2</text>
+  </docTitle>
+  <navMap>
+    <navPoint id="num_1" playOrder="1">
+      <navLabel>
+        <text>Book-3-low</text>
+      </navLabel>
+      <content src="Book-3-low.xhtml"/>
+      <navPoint id="num_2" playOrder="2">
+        <navLabel>
+          <text>Page 2</text>
+        </navLabel>
+        <content src="Book-3-low.xhtml#toc_1"/>
+      </navPoint>
+      <navPoint id="num_3" playOrder="3">
+        <navLabel>
+          <text>Page 3</text>
+        </navLabel>
+        <content src="Book-3-low.xhtml#toc_2"/>
+      </navPoint>
+      <navPoint id="num_4" playOrder="4">
+        <navLabel>
+          <text>Page 4</text>
+        </navLabel>
+        <content src="Book-3-low.xhtml#toc_3"/>
+      </navPoint>
+      <navPoint id="num_5" playOrder="5">
+        <navLabel>
+          <text>Page 5</text>
+        </navLabel>
+        <content src="Book-3-low.xhtml#toc_4"/>
+      </navPoint>
+      <navPoint id="num_6" playOrder="6">
+        <navLabel>
+          <text>Page 6</text>
+        </navLabel>
+        <content src="Book-3-low.xhtml#toc_5"/>
+      </navPoint>
+      <navPoint id="num_7" playOrder="7">
+        <navLabel>
+          <text>Page 7</text>
+        </navLabel>
+        <content src="Book-3-low.xhtml#toc_5"/>
+      </navPoint>
+      <navPoint id="num_8" playOrder="8">
+        <navLabel>
+          <text>Page 8</text>
+        </navLabel>
+        <content src="Book-3-low.xhtml#toc_6"/>
+      </navPoint>
+      <navPoint id="num_9" playOrder="9">
+        <navLabel>
+          <text>Page 9</text>
+        </navLabel>
+        <content src="Book-3-low.xhtml#toc_7"/>
+      </navPoint>
+      <navPoint id="num_10" playOrder="10">
+        <navLabel>
+          <text>Page 10</text>
+        </navLabel>
+        <content src="Book-3-low.xhtml#toc_8"/>
+      </navPoint>
+    </navPoint>
+  </navMap>
+</ncx>

@@ -1,0 +1,56 @@
+<?xml version="1.0"  encoding="UTF-8"?>
+<package xmlns="http://www.idpf.org/2007/opf" unique-identifier="bookid" version="2.0">
+  <metadata xmlns:dc="http://purl.org/dc/elements/1.1/">
+    <dc:title>book 3 low 2</dc:title>
+    <dc:creator xmlns:ns0="http://www.idpf.org/2007/opf" ns0:role="aut" ns0:file-as="Unknown">Unknown</dc:creator>
+    <dc:publisher>Kanika Gupta</dc:publisher>
+    <dc:date>2018-03-27T18:30:00+00:00</dc:date>
+    <dc:source/>
+    <dc:relation/>
+    <dc:coverage/>
+    <dc:rights/>
+    <dc:identifier id="bookid">urn:uuid:99bcbcdd-d802-419a-a2c9-c01b4e7e573f</dc:identifier>
+    <dc:contributor xmlns:ns1="http://www.idpf.org/2007/opf" ns1:role="bkp">calibre (3.20.0) [https://calibre-ebook.com]</dc:contributor>
+    <dc:language>en</dc:language>
+    <dc:identifier xmlns:ns2="http://www.idpf.org/2007/opf" ns2:scheme="calibre">41443241-e7b6-471d-9c5d-2d653083eadb</dc:identifier>
+    <meta name="generator" content="Adobe InDesign 9.0"/>
+    <meta name="cover" content="x203.jpg"/>
+    <meta name="calibre:title_sort" content="book 3 low 2"/>
+    <meta name="calibre:author_link_map" content="{&quot;Unknown&quot;: &quot;&quot;}"/>
+  </metadata>
+  <manifest>
+    <item id="Book-3-low" href="Book-3-low.xhtml" media-type="application/xhtml+xml"/>
+    <item href="../Page1.xhtml" id="id" media-type="application/xhtml+xml"/>
+    <item href="../Page2.xhtml" id="id1" media-type="application/xhtml+xml"/>
+    <item href="../Page3.xhtml" id="id2" media-type="application/xhtml+xml"/>
+    <item href="../text/Page4.xhtml" id="id3" media-type="application/xhtml+xml"/>
+    <item href="../Page5.xhtml" id="id4" media-type="application/xhtml+xml"/>
+    <item href="../Page6.xhtml" id="id5" media-type="application/xhtml+xml"/>
+    <item href="../Page7.xhtml" id="id6" media-type="application/xhtml+xml"/>
+    <item href="../Page8.xhtml" id="id7" media-type="application/xhtml+xml"/>
+    <item id="ncx" href="toc.ncx" media-type="application/x-dtbncx+xml"/>
+    <item id="x1_fmt.jpeg" href="image/1_fmt.jpeg" media-type="image/jpeg"/>
+    <item id="x2_fmt.jpeg" href="image/2_fmt.jpeg" media-type="image/jpeg"/>
+    <item id="x203.jpg" href="image/203.jpg" media-type="image/jpeg"/>
+    <item id="x3_fmt.jpeg" href="image/3_fmt.jpeg" media-type="image/jpeg"/>
+    <item id="x4_fmt.jpeg" href="image/4_fmt.jpeg" media-type="image/jpeg"/>
+    <item id="x5_fmt.jpeg" href="image/5_fmt.jpeg" media-type="image/jpeg"/>
+    <item id="x6_fmt.jpeg" href="image/6_fmt.jpeg" media-type="image/jpeg"/>
+    <item id="x7_fmt.jpeg" href="image/7_fmt.jpeg" media-type="image/jpeg"/>
+    <item id="x8_fmt.jpeg" href="image/8_fmt.jpeg" media-type="image/jpeg"/>
+    <item id="x9_fmt.jpeg" href="image/9_fmt.jpeg" media-type="image/jpeg"/>
+  </manifest>
+  <spine toc="ncx">
+    <itemref idref="Book-3-low"/>
+    <itemref idref="id"/>
+    <itemref idref="id1"/>
+    <itemref idref="id2"/>
+    <itemref idref="id3"/>
+    <itemref idref="id4"/>
+    <itemref idref="id5"/>
+    <itemref idref="id6"/>
+    <itemref idref="id7"/>
+  </spine>
+  <guide>
+    </guide>
+</package>
