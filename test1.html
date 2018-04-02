@@ -4,6 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>EPUB.js Continuous Example</title>
 
 
@@ -16,9 +17,10 @@
         
         html,
         body {
-            margin: 2%;
+            /* margin: 1%; */
             /* height: 100%; */
             /* width: 100%; */
+            overflow: hidden;
         }
 
         /* body {
@@ -58,14 +60,15 @@
 </head>
 
 <body>
-    
+    <div class="container">
     <div id="flipbook" class=""></div>
-    
+</div>
     <script>
         var currentSectionIndex = 8;
         
             $("#flipbook").load("./books/book3_pagefixed/OEBPS/Book-3-low.xhtml", function () {
             $("#flipbook").turn({
+                //display:"single",
                 page: 2,
                 width: 1000,
                 height: 700,
