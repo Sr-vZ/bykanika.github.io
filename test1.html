@@ -14,13 +14,13 @@
     <script src="js/epub.min.js"></script>
     <script src="js/libs/turn.js"></script>
     <style type="text/css">
-        
         html,
         body {
             /* margin: 1%; */
             /* height: 100%; */
             /* width: 100%; */
             overflow: hidden;
+            margin: auto;
         }
 
         /* body {
@@ -33,7 +33,6 @@
 
         /* helpers */
 
-        
         /* book */
 
         .book {
@@ -51,22 +50,30 @@
         .book .page {
             height: 100%;
         }
+
         img {
             max-width: 100%;
             max-height: 100%;
             object-fit: fill;
+        }
+
+        .container {
+            margin: auto;
+            width: fit-content;
+            border: 3px solid green;
+            padding: 10px;
         }
     </style>
 </head>
 
 <body>
     <div class="container">
-    <div id="flipbook" class=""></div>
-</div>
+        <div id="flipbook" class=""></div>
+    </div>
     <script>
         var currentSectionIndex = 8;
-        
-            $("#flipbook").load("./books/book3_pagefixed/OEBPS/Book-3-low.xhtml", function () {
+
+        $("#flipbook").load("./books/book3_pagefixed/OEBPS/Book-3-low.xhtml", function () {
             $("#flipbook").turn({
                 //display:"single",
                 page: 2,
@@ -85,7 +92,6 @@
                 }
             });
         });
-        
     </script>
 
 </body>
