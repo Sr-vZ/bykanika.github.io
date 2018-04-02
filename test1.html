@@ -14,81 +14,16 @@
     <script src="js/libs/turn.js"></script>
     <style type="text/css">
         
-        /* body {
-            overflow: hidden;
-        }
-
-        #flipbook {
-            width: 100%;
-            height: 768px;
-        }
-
-        #flipbook .page {
-            width: 100%;
-            height: 768px;
-            background-color: white;
-            line-height: 300px;
-            font-size: 20px;
-            text-align: center;
-        }
-
-        #flipbook .page-wrapper {
-            -webkit-perspective: 2000px;
-            -moz-perspective: 2000px;
-            -ms-perspective: 2000px;
-            -o-perspective: 2000px;
-            perspective: 2000px;
-        }
-
-        #flipbook .hard {
-            background: #ccc !important;
-            color: #333;
-            -webkit-box-shadow: inset 0 0 5px #666;
-            -moz-box-shadow: inset 0 0 5px #666;
-            -o-box-shadow: inset 0 0 5px #666;
-            -ms-box-shadow: inset 0 0 5px #666;
-            box-shadow: inset 0 0 5px #666;
-            font-weight: bold;
-        }
-
-        #flipbook .odd {
-            background: -webkit-gradient(linear, right top, left top, color-stop(0.95, #FFF), color-stop(1, #DADADA));
-            background-image: -webkit-linear-gradient(right, #FFF 95%, #C4C4C4 100%);
-            background-image: -moz-linear-gradient(right, #FFF 95%, #C4C4C4 100%);
-            background-image: -ms-linear-gradient(right, #FFF 95%, #C4C4C4 100%);
-            background-image: -o-linear-gradient(right, #FFF 95%, #C4C4C4 100%);
-            background-image: linear-gradient(right, #FFF 95%, #C4C4C4 100%);
-            -webkit-box-shadow: inset 0 0 5px #666;
-            -moz-box-shadow: inset 0 0 5px #666;
-            -o-box-shadow: inset 0 0 5px #666;
-            -ms-box-shadow: inset 0 0 5px #666;
-            box-shadow: inset 0 0 5px #666;
-
-        }
-
-        #flipbook .even {
-            background: -webkit-gradient(linear, left top, right top, color-stop(0.95, #fff), color-stop(1, #dadada));
-            background-image: -webkit-linear-gradient(left, #fff 95%, #dadada 100%);
-            background-image: -moz-linear-gradient(left, #fff 95%, #dadada 100%);
-            background-image: -ms-linear-gradient(left, #fff 95%, #dadada 100%);
-            background-image: -o-linear-gradient(left, #fff 95%, #dadada 100%);
-            background-image: linear-gradient(left, #fff 95%, #dadada 100%);
-            -webkit-box-shadow: inset 0 0 5px #666;
-            -moz-box-shadow: inset 0 0 5px #666;
-            -o-box-shadow: inset 0 0 5px #666;
-            -ms-box-shadow: inset 0 0 5px #666;
-            box-shadow: inset 0 0 5px #666;
-        } */
-
         html,
         body {
-            margin: 0;
-            height: 100%;
+            margin: 2%;
+            /* height: 100%; */
+            /* width: 100%; */
         }
 
-        body {
+        /* body {
             background-color: #333;
-        }
+        } */
 
         body.hide-overflow {
             overflow: hidden;
@@ -96,22 +31,7 @@
 
         /* helpers */
 
-        .t {
-            display: table;
-            width: 100%;
-            height: 100%;
-        }
-
-        .tc {
-            display: table-cell;
-            vertical-align: middle;
-            text-align: center;
-        }
-
-        .rel {
-            position: relative;
-        }
-
+        
         /* book */
 
         .book {
@@ -132,88 +52,18 @@
         img {
             max-width: 100%;
             max-height: 100%;
-            object-fit: cover;
+            object-fit: fill;
         }
     </style>
 </head>
 
 <body>
-    <!-- <div id="main" class="container"> -->
-    <!-- <div id="prev" onclick="move_down();" class="arrow left">‹</div> -->
-    <!-- <div id="area" class="center"></div> -->
-    <!-- <div id="next" onclick="move_up();" class="arrow right">›</div> -->
-    <!-- </div> -->
-    <div id="flipbook"></div>
-    <!-- <div class="t">
-        <div class="tc rel">
-            <div class="book" id="book">
-                <div class="page">
-                    <img src="./books/book3_pagefixed/OEBPS/image/1_fmt.jpeg" alt="1.jpg" />
-                </div>
-                <div id="toc_1" class="page">
-                    <img src="./books/book3_pagefixed/OEBPS/image/2_fmt.jpeg" alt="2.jpg" />
-                </div>
-                <div id="toc_2" class="page">
-                    <img src="./books/book3_pagefixed/OEBPS/image/3_fmt.jpeg" alt="3.jpg" />
-                </div>
-                <div id="toc_3" class="page">
-                    <img src="./books/book3_pagefixed/OEBPS/image/4_fmt.jpeg" alt="4.jpg" />
-                </div>
-                <div id="toc_4" class="page">
-                    <img src="./books/book3_pagefixed/OEBPS/image/5_fmt.jpeg" alt="5.jpg" />
-                </div>
-                <div id="toc_5" class="page">
-                    <img src="./books/book3_pagefixed/OEBPS/image/6_fmt.jpeg" alt="6.jpg" />
-                </div>
-                <div id="toc_6" class="page">
-                    <img src="./books/book3_pagefixed/OEBPS/image/7_fmt.jpeg" alt="7.jpg" />
-                </div>
-                <div id="toc_7" class="page">
-                    <img src="./books/book3_pagefixed/OEBPS/image/8_fmt.jpeg" alt="8.jpg" />
-                </div>
-                <div id="toc_8" class="page">
-                    <img src="./books/book3_pagefixed/OEBPS/image/9_fmt.jpeg" alt="9.jpg" />
-                </div>
-            </div>
-        </div>
-    </div> -->
+    
+    <div id="flipbook" class=""></div>
+    
     <script>
         var currentSectionIndex = 8;
-        // Load the opf
-        //var book = ePub("./books/book_3_pagefixed/");
-        //var rendition = book.renderTo(document.body, { method: "pagination", width: "100%" });
-        // var displayed = book.renderer.displayChapter("epubcfi(/6/14[xchapter_001]!4/2/24/2[c001p0011]/1:799)");
-
-
-
-        // displayed.then(function (renderer) {
-        //     // -- do stuff
-        // });
-
-        // //Navigation loaded
-        // book.loaded.navigation.then(function (toc) {
-        //     // console.log(toc);
-        // });
-
-        // book.renderTo(document.body);
-        // book.forceSingle();
-        // $("#area").load("./books/book3_pagefixed/OEBPS/Book-3-low.xhtml", function () {
-        //     $("#area").turn({
-        //         width: 1200,
-        //         height: 800,
-        //         autoCenter: true,
-        //         elevation: 50
-        //     });
-
-        // });
-
-        // function move_up() {
-        //     document.getElementById('area').scrollTop += 50;
-        // }
-
-        // function move_down() {
-        //     document.getElementById('area').scrollTop -= 50;
-        // }
+        
             $("#flipbook").load("./books/book3_pagefixed/OEBPS/Book-3-low.xhtml", function () {
             $("#flipbook").turn({
                 page: 2,
