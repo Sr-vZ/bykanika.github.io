@@ -68,7 +68,7 @@
 
 <body>
     <div class="container">
-        <div id="flipbook" class=""></div>
+        <div id="flipbook" class="book"></div>
     </div>
     <script>
         var currentSectionIndex = 8;
@@ -77,8 +77,8 @@
             $("#flipbook").turn({
                 //display:"single",
                 page: 2,
-                width: 1000,
-                height: 700,
+                width: 640,
+                height: 480,
                 autoCenter: true,
                 when: {
                     start: function (event, pageObject, corner) {
