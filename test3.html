@@ -10,9 +10,11 @@
 
     <script src="js/libs/jquery.min.js"></script>
     <!-- <script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script> -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
     <script src="js/libs/zip.min.js"></script>
     <script src="js/epub.min.js"></script>
     <script src="js/libs/turn.js"></script>
+    <link rel="stylesheet" href="css/steve-jobs.css">
     <style type="text/css">
         html,
         body {
@@ -46,27 +48,100 @@
 
         .book .page {
             height: 100%;
+            width: 100%;
+            box-shadow:#E2E2E2;
         }
 
         img {
             max-width: 100%;
             max-height: 100%;
             object-fit: fill;
-            border: 2px solid black;
+            /* border: 2px solid black; */
+            
+            
         }
 
         .container {
-            margin: auto;
+            margin:auto;
             width: auto;
             border: 3px solid grey;
             padding: 10px;
         }
+        .arrow {
+            position: absolute;
+            top: 50%;
+            margin-top: -32px;
+            font-size: 48px;
+            color: #E2E2E2;
+            font-family: arial, sans-serif;
+            font-weight: bold;
+            cursor: pointer;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            user-select: none;
+        }
+
+        .arrow:hover {
+            color: #777;
+        }
+
+        .arrow:active {
+            color: #000;
+        }
+         .left {
+            float: left;
+            width: 5%;
+            text-align: left;
+            /* padding:10px; */
+        }
+
+        .right {
+            float: right;
+            width: 5%;
+            text-align: right;
+            /* padding:10px; */
+        }
+
+        .center {
+            float: left;
+            /* width: 90%; */
+            text-align: center;
+        }
+        .book-container {
+            /* margin:auto; */
+            /* width: auto; */
+            /* border: 3px solid grey; */
+            /* padding: 10px; */
+        }
+
+.round {
+    border-radius: 50%;
+}
+.pages{
+    box-shadow:(
+   	            /* The top layer shadow */
+                1px 1px 1px rgba(0,0,0,0.15),
+                /* The second layer */
+                10px 0px 0 -5px #eee,
+                /* The second layer shadow */
+                10px 0px 1px -4px rgba(0,0,0,0.15),
+                /* The third layer */
+                20px 0px 0 -10px #eee,
+                /* The third layer shadow */
+                20px 0px 1px -9px rgba(0,0,0,0.15)
+                    )
+}
     </style>
 </head>
 
 <body>
-    <div class="container">
-        <div id="flipbook" class="book"></div>
+    <div class="container sj-book">
+        <div id="left-arrow" class="arrow left round"><</div>
+        <div id="flipbook" class="book animated page p13 odd"></div>
+        <div id="left-arrow" class="arrow right round">></div>
+        <div id="slider-bar" class="turnjs-slider">
+            <div id="slider"></div>
+        </div>
     </div>
     <script>
         var currentSectionIndex = 8;
@@ -78,6 +153,9 @@
                 width: 640,
                 height: 420,
                 autoCenter: true,
+                elevation: 50,
+                gradients:true,
+                duration:1000,
                 when: {
                     start: function (event, pageObject, corner) {
                         if (pageObject.next == 1)
@@ -90,6 +168,9 @@
                 }
             });
         });
+        // Slider
+
+                        
     </script>
 
 </body>
