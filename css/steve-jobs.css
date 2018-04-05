@@ -154,7 +154,7 @@ body, ul, table, form{
 	z-index:999;
 }
 
-.zoom-pic img{
+.zoom-pic {
 	-webkit-box-shadow:0 0 20px #999;
 	-moz-box-shadow:0 0 20px #999;
 	-o-box-shadow:0 0 20px #999;
@@ -168,7 +168,7 @@ body, ul, table, form{
 .sj-book .p111, 
 .sj-book .p112{
 	background-color:white;
-	background-image:url(../pics/book-covers.jpg) !important;
+	background-image:url(../img/book-covers.jpg) !important;
 }
 
 .sj-book .p1{
@@ -209,7 +209,7 @@ body, ul, table, form{
 }
 
 .sj-book .depth{
-	background-image:url(../pics/pages-depth.png);
+	background-image:url(../img/pages-depth.png);
 	position:absolute;
 	top:7px;
 	width:16px;
@@ -286,7 +286,7 @@ body, ul, table, form{
 }
 
 .sj-book .loader{
-	background-image:url(../pics/loader.gif);
+	background-image:url(../img/loader.gif);
 	width:22px;
 	height:22px;
 	position:absolute;
@@ -361,14 +361,14 @@ body, ul, table, form{
 
 .ie8 .sj-book .even,
 .ie9 .sj-book .even{
-	background-image:url(../pics/gradient-page-left.jpg);
+	background-image:url(../img/gradient-page-left.jpg);
 	background-position:right top;
 	background-repeat:repeat-y;
 }
 
 .ie8 .sj-book .odd,
 .ie9 .sj-book .odd{
-	background-image:url(../pics/gradient-page-right.jpg);
+	background-image:url(../img/gradient-page-right.jpg);
 	background-position:left top;
 	background-repeat:repeat-y;
 }
