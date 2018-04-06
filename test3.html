@@ -5,38 +5,54 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <title>EPUB.js Continuous Example</title>
 
 
     <script src="js/libs/jquery.min.js"></script>
     <!-- <script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script> -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
     <script src="js/libs/zip.min.js"></script>
     <script src="js/epub.min.js"></script>
     <script src="js/libs/turn.js"></script>
-    <link rel="stylesheet" href="css/steve-jobs.css">
+    <!-- <link rel="stylesheet" href="css/steve-jobs.css"> -->
+
+    <!-- <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+        crossorigin="anonymous"></script> -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+        crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+        crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+        crossorigin="anonymous">
     <style type="text/css">
         html,
         body {
             /* margin: 1%; */
             /* height: 100%; */
             /* width: 100%; */
-            overflow: hidden;
-            margin: auto;
+            /* overflow: hidden; */
+            /* margin: auto; */
         }
+
         /* body {
             background-color: #333;
         } */
 
         body.hide-overflow {
-            overflow: hidden;
+            /* overflow: hidden; */
         }
+
         /* helpers */
+
         /* book */
 
         .book {
             margin: 0 auto;
             width: 90%;
             height: 90%;
+            display:table;
+            box-shadow: 0 0 10px rgba(0, 0, 0, .65);
             -webkit-touch-callout: none;
             -webkit-user-select: none;
             -khtml-user-select: none;
@@ -47,67 +63,134 @@
 
         .book .page {
             height: 100%;
+            width: 100%;
+            box-shadow: #E2E2E2;
         }
 
         img {
             max-width: 100%;
             max-height: 100%;
             object-fit: fill;
-            border: 2px solid black;
+            /* border: 2px solid black; */
         }
 
-        .container {
+        /* .container {
             margin: auto;
-            width: auto;
+            width: fit-content;
             border: 3px solid grey;
             padding: 10px;
+        } */
+
+        .arrow {
+            position: absolute;
+            top: 50%;
+            margin-top: -32px;
+            font-size: 48px;
+            color: #E2E2E2;
+            font-family: arial, sans-serif;
+            font-weight: bold;
+            cursor: pointer;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            user-select: none;
+        }
+
+        .arrow:hover {
+            color: #777;
+        }
+
+        .arrow:active {
+            color: #000;
+        }
+
+        .left {
+            float: left;
+            width: 5%;
+            text-align: left;
+            /* padding:10px; */
+        }
+
+        .right {
+            float: right;
+            width: 5%;
+            text-align: right;
+            /* padding:10px; */
+        }
+
+        .center {
+            float: left;
+            /* width: 90%; */
+            text-align: center;
+        }
+
+        .book-container {
+            /* margin:auto; */
+            /* width: auto; */
+            /* border: 3px solid grey; */
+            /* padding: 10px; */
+        }
+
+        .round {
+            border-radius: 50%;
+        }
+
+        .page-stack {
+            box-shadow: (/* The top layer shadow */
+            1px 1px 1px rgba(0, 0, 0, 0.15),
+            /* The second layer */
+            10px 0px 0 -5px #eee,
+            /* The second layer shadow */
+            10px 0px 1px -4px rgba(0, 0, 0, 0.15),
+            /* The third layer */
+            20px 0px 0 -10px #eee,
+            /* The third layer shadow */
+            20px 0px 1px -9px rgba(0, 0, 0, 0.15))
         }
     </style>
 </head>
 
 <body>
-        <div id="canvas">
-                <div id="book-zoom">
-                    <div class="sj-book">
-                        <div depth="5" class="hard"> <div class="side"></div> </div>
-                        <div depth="5" class="hard front-side"> <div class="depth"></div> </div>
-                        <div class="own-size"></div>
-                        <div class="container">
-                                <div id="flipbook" class="book"></div>
-                        </div>
-                        <div class="own-size even"></div>
-                        <div class="hard fixed back-side p111"> <div class="depth"></div> </div>
-                        <div class="hard p112"></div>
-                    </div>
-                </div>
-                <div id="slider-bar" class="turnjs-slider">
-                    <div id="slider"></div>
-                </div>
+    <div class="container-fluid">
+        <div class="row align-items-center">
+            <div class="col-sm-1">
+                <div id="left-arrow" class="">PREV</div>
             </div>
-    
-    <script>
-        var currentSectionIndex = 8;
+            <div class="col-sm-5-auto">
+                <div id="flipbook" class="book"></div>
+            </div>
+            <div class="col-sm-1">
+                <div id="right-arrow" class="">NEXT</div>
+            </div>
+        </div>
+        </div>
+        <script>
+            var currentSectionIndex = 8;
 
-        $("#flipbook").load("./books/book3_pagefixed/OEBPS/Book-3-low.xhtml", function () {
-            $("#flipbook").turn({
-                //display:"single",
-                page: 2,
-                width: 640,
-                height: 420,
-                autoCenter: true,
-                when: {
-                    start: function (event, pageObject, corner) {
-                        if (pageObject.next == 1)
-                            event.preventDefault();
-                    },
-                    turning: function (event, page, view) {
-                        if (page == 1)
-                            event.preventDefault();
+            $("#flipbook").load("./books/book3_pagefixed/OEBPS/Book-3-low.xhtml", function () {
+                $("#flipbook").turn({
+                    //display:"single",
+                    page: 2,
+                    width: 640,
+                    height: 420,
+                    autoCenter: true,
+                    elevation: 50,
+                    gradients: true,
+                    duration: 1000,
+                    // accelration:true,
+                    when: {
+                        start: function (event, pageObject, corner) {
+                            if (pageObject.next == 1)
+                                event.preventDefault();
+                        },
+                        turning: function (event, page, view) {
+                            if (page == 1)
+                                event.preventDefault();
+                        }
                     }
-                }
+                });
             });
-        });
-    </script>
+            // Slider
+        </script>
 
 </body>
 
