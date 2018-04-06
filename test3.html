@@ -5,7 +5,9 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    
     <title>EPUB.js Continuous Example</title>
 
 
@@ -48,17 +50,17 @@
         /* book */
 
         .book {
-            margin: 0 auto;
+            /* margin: 0 auto;
             width: 90%;
             height: 90%;
-            display:table;
+            display:table; */
             box-shadow: 0 0 10px rgba(0, 0, 0, .65);
-            -webkit-touch-callout: none;
+            /* -webkit-touch-callout: none;
             -webkit-user-select: none;
             -khtml-user-select: none;
             -moz-user-select: none;
             -ms-user-select: none;
-            user-select: none;
+            user-select: none; */
         }
 
         .book .page {
@@ -68,9 +70,10 @@
         }
 
         img {
+            min-width: 100%;
             max-width: 100%;
             max-height: 100%;
-            object-fit: fill;
+            object-fit: cover;
             /* border: 2px solid black; */
         }
 
@@ -153,13 +156,20 @@
     <div class="container-fluid">
         <div class="row align-items-center">
             <div class="col-sm-1">
-                <div id="left-arrow" class="">PREV</div>
+                <div  class="">
+                    <button id="left-arrow" type="button" class="btn btn-default">
+                        <span class="glyphicon glyphicon-chevron-left" aria-hidden="true">Prev</span>
+                    </button>
+                </div>
             </div>
             <div class="col-sm-5-auto">
                 <div id="flipbook" class="book"></div>
             </div>
             <div class="col-sm-1">
-                <div id="right-arrow" class="">NEXT</div>
+                <div  class="">
+                    <button id="right-arrow" type="button" class="btn btn-default">
+                        <span class="glyphicon glyphicon-chevron-right" aria-hidden="true">Next</span>
+                    </button></div>
             </div>
         </div>
         </div>
@@ -190,6 +200,12 @@
                 });
             });
             // Slider
+            $("#left-arrow").on('click',function () {
+                $('#flipbook').turn('previous');
+            })
+            $("#right-arrow").on('click', function () {
+                    $('#flipbook').turn('next');
+            })
         </script>
 
 </body>
