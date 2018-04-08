@@ -29,14 +29,7 @@
         crossorigin="anonymous">
     <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css" rel="stylesheet">
     <style type="text/css">
-        html,
-        body {
-            /* margin: 1%; */
-            /* height: 100%; */
-            /* width: 100%; */
-            /* overflow: hidden; */
-            /* margin: auto; */
-        }
+        
 
         /* body {
             background-color: #333;
@@ -163,11 +156,11 @@
 </head>
 
 <body>
-    <div class="container-fluid h-100 align-items-center center-block">
+    <div id="book-container" class="container-fluid h-100 align-items-center center-block">
         <div class="row h-100 align-items-center">
-            <div class="col-sm-1 text-center">
+            <div class="col-sm-1 text-center align-items-center">
                 <div class="">
-                    <button id="left-arrow" type="button" class="btn btn-default btn-lg">
+                    <button id="left-arrow" type="button" class="btn btn-lg">
                         <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
                     </button>
                 </div>
@@ -175,9 +168,9 @@
             <div class="col-sm-5-auto mx-auto">
                 <div id="flipbook" class="book page-stack"></div>
             </div>
-            <div class="col-sm-1 text-center">
+            <div class="col-sm-1 text-center align-items-center">
                 <div class="">
-                    <button id="right-arrow" type="button" class="btn btn-default btn-lg">
+                    <button id="right-arrow" type="button" class="btn btn-lg">
                         <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
                     </button>
                 </div>
@@ -186,14 +179,19 @@
     </div>
     <script>
         var currentSectionIndex = 8;
-        var dispType = "";
+        var dispType = "double";
         var h,w;
+        window.addEventListener('resize', getResolution);
         getResolution();
         $("#flipbook").load("./books/book3_pagefixed/OEBPS/Book-3-low.xhtml", function () {
+            initBook();
+        });
+
+        function initBook(){
             $("#flipbook").turn({
-                //display: dispType,
+                display: dispType,
                 page: 2,
-                width: (w/2)-20,//620,
+                width: w*0.60,//620,
                 height:h/2,
                 autoCenter: true,
                 elevation: 50,
@@ -211,21 +209,28 @@
                     }
                 }
             });
-        });
-        // Slider
+        }
+        // onclick behavior for side buttons
         $("#left-arrow").on('click', function () {
             $('#flipbook').turn('previous');
         })
         $("#right-arrow").on('click', function () {
             $('#flipbook').turn('next');
         })
-
+        
+        //fetch current screen width and height
         function getResolution() {
             h = window.screen.availHeight;
             w = window.screen.availWidth;
             console.log("width: "+w+" height: "+h);
+            if(h>w){
+                dispType = "single";
+            }else{
+                dispType = "double";
+            }
+            //initBook();
         }
-
+        
         function detectMobile() {
             var check = false;
             (function (a) {
@@ -237,6 +242,60 @@
             })(navigator.userAgent || navigator.vendor || window.opera);
             return check;
         };
+        var module = {
+        ratio: 1.38,
+        init: function (id) {
+            var me = this;
+
+            // if older browser then don't run javascript
+            if (document.addEventListener) {
+                this.el = document.getElementById(id);
+                this.resize();
+                this.plugins();
+
+                // on window resize, update the plugin size
+                window.addEventListener('resize', function (e) {
+                    var size = me.resize();
+                    $(me.el).turn('size', size.width, size.height);
+                });
+            }
+        },
+        resize: function () {
+            // reset the width and height to the css defaults
+            this.el.style.width = '';
+            this.el.style.height = '';
+
+            var width = this.el.clientWidth,
+                height = Math.round(width / this.ratio),
+                padded = Math.round(document.body.clientHeight * 0.9);
+
+            // if the height is too big for the window, constrain it
+            if (height > padded) {
+                height = padded;
+                width = Math.round(height * this.ratio);
+            }
+
+            // set the width and height matching the aspect ratio
+            this.el.style.width = width + 'px';
+            this.el.style.height = height + 'px';
+
+            return {
+                width: width,
+                height: height
+            };
+        },
+        plugins: function () {
+            // run the plugin
+            $(this.el).turn({
+                gradients: true,
+                acceleration: true
+            });
+            // hide the body overflow
+            document.body.className = 'hide-overflow';
+        }
+    };
+
+    module.init('flipbook');
     </script>
 
 </body>
