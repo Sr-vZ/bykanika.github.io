@@ -7,13 +7,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    
+
     <title>EPUB.js Continuous Example</title>
 
 
     <script src="js/libs/jquery.min.js"></script>
     <!-- <script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script> -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script> -->
     <script src="js/libs/zip.min.js"></script>
     <script src="js/epub.min.js"></script>
     <script src="js/libs/turn.js"></script>
@@ -27,19 +27,11 @@
         crossorigin="anonymous"></script>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
         crossorigin="anonymous">
+    <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css" rel="stylesheet">
     <style type="text/css">
-        html,
         body {
-            /* margin: 1%; */
-            /* height: 100%; */
-            /* width: 100%; */
-            /* overflow: hidden; */
-            /* margin: auto; */
+            overflow: hidden;
         }
-
-        /* body {
-            background-color: #333;
-        } */
 
         body.hide-overflow {
             /* overflow: hidden; */
@@ -66,14 +58,14 @@
         .book .page {
             height: 100%;
             width: 100%;
-            box-shadow: #E2E2E2;
+            /* box-shadow: #E2E2E2; */
         }
 
         img {
             min-width: 100%;
             max-width: 100%;
             max-height: 100%;
-            object-fit: cover;
+            object-fit: fill;
             /* border: 2px solid black; */
         }
 
@@ -149,64 +141,182 @@
             /* The third layer shadow */
             20px 0px 1px -9px rgba(0, 0, 0, 0.15))
         }
+
+        .center-block {
+            position: absolute;
+            margin: auto;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            left: 0;
+        }
+
+        .paper {
+            background: #fff;
+            box-shadow:
+            /* #888888,  */
+            /* The top layer shadow */
+            1px 1px 1px rgba(0, 0, 0, 0.15),
+            /* The second layer */
+            10px 0px 0 -5px #eee,
+            /* The second layer shadow */
+            10px 0px 1px -4px rgba(0, 0, 0, 0.15),
+            /* The third layer */
+            20px 0px 0 -10px #eee,
+            /* The third layer shadow */
+            20px 0px 1px -9px rgba(0, 0, 0, 0.15),
+
+            /* The top layer shadow */
+            -1px 1px 1px rgba(0, 0, 0, 0.15),
+            /* The second layer */
+            -10px 0px 0 -5px #eee,
+            /* The second layer shadow */
+            -10px 0px 1px -4px rgba(0, 0, 0, 0.15),
+            /* The third layer */
+            -20px 0px 0 -10px #eee,
+            /* The third layer shadow */
+            -20px 0px 1px -9px rgba(0, 0, 0, 0.15);
+            /* Padding for demo purposes */
+            /* padding: 30px; */
+        }
     </style>
 </head>
 
 <body>
-    <div class="container-fluid">
-        <div class="row align-items-center">
-            <div class="col-sm-1">
-                <div  class="">
-                    <button id="left-arrow" type="button" class="btn btn-default">
-                        <span class="glyphicon glyphicon-chevron-left" aria-hidden="true">Prev</span>
+    <div id="book-container" class="container-fluid h-100 align-items-center center-block">
+        <div class="row h-100 clearfix align-items-center">
+            <div class="col-sm-1 pagination-centered text-center">
+                <div class="text-center">
+                    <button id="left-arrow" type="button" class="btn btn-lg">
+                        <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
                     </button>
                 </div>
             </div>
-            <div class="col-sm-5-auto">
-                <div id="flipbook" class="book"></div>
+            <div class="col-sm-5-auto mx-auto">
+                <div id="flipbook" class="book paper"></div>
             </div>
-            <div class="col-sm-1">
-                <div  class="">
-                    <button id="right-arrow" type="button" class="btn btn-default">
-                        <span class="glyphicon glyphicon-chevron-right" aria-hidden="true">Next</span>
-                    </button></div>
+            <div class="col-sm-1 pagination-centered text-center">
+                <div class="text-center">
+                    <button id="right-arrow" type="button" class="btn btn-lg">
+                        <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+                    </button>
+                </div>
             </div>
         </div>
-        </div>
-        <script>
-            var currentSectionIndex = 8;
+    </div>
+    <script>
+        var currentSectionIndex = 8;
+        var dispType = "double";
+        var h, w;
+        window.addEventListener('resize', getResolution);
+        getResolution();
+        $("#flipbook").load("./books/book3_pagefixed/OEBPS/Book-3-low.xhtml", function () {
+            initBook();
+        });
 
-            $("#flipbook").load("./books/book3_pagefixed/OEBPS/Book-3-low.xhtml", function () {
-                $("#flipbook").turn({
-                    //display:"single",
-                    //page: 2,
-                    width: 640,
-                    height: 420,
-                    autoCenter: true,
-                    elevation: 50,
-                    gradients: true,
-                    duration: 1000,
-                    // accelration:true,
-                    // when: {
-                    //     start: function (event, pageObject, corner) {
-                    //         if (pageObject.next == 1)
-                    //             event.preventDefault();
-                    //     },
-                    //     turning: function (event, page, view) {
-                    //         if (page == 1)
-                    //             event.preventDefault();
-                    //     }
-                    // }
-                });
+        function initBook() {
+            $("#flipbook").turn({
+                display: dispType,
+                // page: 2,
+                width: Math.round(h*0.75), //620,
+                height: h/2,
+                autoCenter: false,
+                elevation: 50,
+                gradients: true,
+                duration: 1500,
+                // pages: 8,
+                accelration:true,
+                when: {
+                    start: function (event, pageObject, corner) {
+                        if (pageObject.next == 1)
+                            event.preventDefault();
+                    },
+                    turning: function (event, page, view) {
+                        if (page == 1)
+                            event.preventDefault();
+                        if (page == 12)
+                            event.preventDefault();
+                    }
+                }
             });
-            // Slider
-            $("#left-arrow").on('click',function () {
-                $('#flipbook').turn('previous');
-            })
-            $("#right-arrow").on('click', function () {
-                    $('#flipbook').turn('next');
-            })
-        </script>
+        }
+        // onclick behavior for side buttons
+        $("#left-arrow").on('click', function () {
+            $('#flipbook').turn('previous');
+        })
+        $("#right-arrow").on('click', function () {
+            $('#flipbook').turn('next');
+        })
+
+        //fetch current screen width and height
+        function getResolution() {
+            h = window.screen.availHeight;
+            w = window.screen.availWidth;
+            console.log("width: " + w + " height: " + h);
+            if (h > w) {
+                dispType = "single";
+            } else {
+                dispType = "double";
+            }
+            //initBook();
+        }
+
+        
+        // var module = {
+        //     ratio: 1.38,
+        //     init: function (id) {
+        //         var me = this;
+
+        //         // if older browser then don't run javascript
+        //         if (document.addEventListener) {
+        //             this.el = document.getElementById(id);
+        //             this.resize();
+        //             this.plugins();
+
+        //             // on window resize, update the plugin size
+        //             window.addEventListener('resize', function (e) {
+        //                 var size = me.resize();
+        //                 $(me.el).turn('size', size.width, size.height);
+        //             });
+        //         }
+        //     },
+        //     resize: function () {
+        //         // reset the width and height to the css defaults
+        //         this.el.style.width = '';
+        //         this.el.style.height = '';
+
+        //         var width = this.el.clientWidth,
+        //             height = Math.round(width / this.ratio),
+        //             padded = Math.round(document.body.clientHeight * 0.9);
+
+        //         // if the height is too big for the window, constrain it
+        //         if (height > padded) {
+        //             height = padded;
+        //             width = Math.round(height * this.ratio);
+        //         }
+
+        //         // set the width and height matching the aspect ratio
+        //         this.el.style.width = width + 'px';
+        //         this.el.style.height = height + 'px';
+
+        //         return {
+        //             width: width,
+        //             height: height
+        //         };
+        //     },
+        //     plugins: function () {
+        //         // run the plugin
+        //         $(this.el).turn({
+        //             gradients: true,
+        //             acceleration: true
+        //         });
+        //         // hide the body overflow
+        //         document.body.className = 'hide-overflow';
+        //     }
+        // };
+
+        //module.init('flipbook');
+    </script>
 
 </body>
 
