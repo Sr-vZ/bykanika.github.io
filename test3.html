@@ -179,7 +179,7 @@
             $("#flipbook").load("./books/book3_pagefixed/OEBPS/Book-3-low.xhtml", function () {
                 $("#flipbook").turn({
                     //display:"single",
-                    page: 2,
+                    //page: 2,
                     width: 640,
                     height: 420,
                     autoCenter: true,
@@ -187,16 +187,16 @@
                     gradients: true,
                     duration: 1000,
                     // accelration:true,
-                    when: {
-                        start: function (event, pageObject, corner) {
-                            if (pageObject.next == 1)
-                                event.preventDefault();
-                        },
-                        turning: function (event, page, view) {
-                            if (page == 1)
-                                event.preventDefault();
-                        }
-                    }
+                    // when: {
+                    //     start: function (event, pageObject, corner) {
+                    //         if (pageObject.next == 1)
+                    //             event.preventDefault();
+                    //     },
+                    //     turning: function (event, page, view) {
+                    //         if (page == 1)
+                    //             event.preventDefault();
+                    //     }
+                    // }
                 });
             });
             // Slider
