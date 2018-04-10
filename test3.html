@@ -29,9 +29,9 @@
         crossorigin="anonymous">
     <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css" rel="stylesheet">
     <style type="text/css">
-        /* body {
-            background-color: #333;
-        } */
+        body {
+            overflow: hidden;
+        }
 
         body.hide-overflow {
             /* overflow: hidden; */
@@ -217,14 +217,15 @@
         function initBook() {
             $("#flipbook").turn({
                 display: dispType,
-                page: 2,
+                // page: 2,
                 width: Math.round(w/2.5), //620,
                 height: (h/2.5),
                 autoCenter: false,
                 elevation: 50,
                 gradients: true,
                 duration: 1200,
-                // accelration:true,
+                // pages: 8,
+                accelration:true,
                 when: {
                     start: function (event, pageObject, corner) {
                         if (pageObject.next == 1)
@@ -232,6 +233,8 @@
                     },
                     turning: function (event, page, view) {
                         if (page == 1)
+                            event.preventDefault();
+                        if (page == 12)
                             event.preventDefault();
                     }
                 }
