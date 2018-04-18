@@ -212,7 +212,7 @@
         window.addEventListener('resize', getResolution);
         getResolution();
         getiFrameRes();
-        
+
         $("#flipbook").load("./books/book3_pagefixed/OEBPS/Book-3-low.xhtml", function () {
             initBook();
         });
@@ -253,10 +253,10 @@
 
         //fetch current screen width and height
         function getResolution() {
-            //h = window.screen.availHeight;
-            //w = window.screen.availWidth;
-            h = window.innerHeight;
-            w = window.innerWidth;
+            h = window.screen.availHeight;
+            w = window.screen.availWidth;
+            //h = window.innerHeight;
+            //w = window.innerWidth;
             console.log("width: " + w + " height: " + h);
             if (h > w) {
                 dispType = "single";
