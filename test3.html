@@ -211,6 +211,8 @@
         var h, w,ih,iw;
         window.addEventListener('resize', getResolution);
         getResolution();
+        getiFrameRes();
+        
         $("#flipbook").load("./books/book3_pagefixed/OEBPS/Book-3-low.xhtml", function () {
             initBook();
         });
@@ -264,7 +266,11 @@
             //initBook();
         }
         //fetch iFrame height and length
-        
+        function getiFrameRes(){
+            ih = $("#bookFrame").height();
+            iw = $("#bookFrame").width();
+            console.log(ih, iw);
+        }
         
         // var module = {
         //     ratio: 1.38,
