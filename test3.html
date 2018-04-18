@@ -184,7 +184,7 @@
 </head>
 
 <body>
-    <div id="book-container" class="container-fluid h-100 align-items-center center-block">
+    <div id="book-container" class="container h-100 align-items-center center-block">
         <div class="row h-100 clearfix align-items-center">
             <div class="col-md-1 col-xs-2 pagination-centered text-center">
                 <div class="text-center">
@@ -208,7 +208,7 @@
     <script>
         var currentSectionIndex = 8;
         var dispType = "double";
-        var h, w;
+        var h, w,ih,iw;
         window.addEventListener('resize', getResolution);
         getResolution();
         $("#flipbook").load("./books/book3_pagefixed/OEBPS/Book-3-low.xhtml", function () {
@@ -251,8 +251,10 @@
 
         //fetch current screen width and height
         function getResolution() {
-            h = window.screen.availHeight;
-            w = window.screen.availWidth;
+            //h = window.screen.availHeight;
+            //w = window.screen.availWidth;
+            h = window.innerHeight;
+            w = window.innerWidth;
             console.log("width: " + w + " height: " + h);
             if (h > w) {
                 dispType = "single";
@@ -261,7 +263,8 @@
             }
             //initBook();
         }
-
+        //fetch iFrame height and length
+        
         
         // var module = {
         //     ratio: 1.38,
