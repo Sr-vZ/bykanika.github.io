@@ -184,7 +184,7 @@
 </head>
 
 <body>
-<iframe id="localiFrame" scrolling="no" frameborder="0" scrolling="no">
+<!-- <iframe id="localiFrame" scrolling="no" frameborder="0" scrolling="no" height="450px" width="900px"> -->
     <div id="book-container" class="container-fluid h-100 align-items-center center-block">
         <div class="row h-100 clearfix align-items-center">
             <div class="col-md-1 col-xs-2 pagination-centered text-center">
@@ -206,7 +206,7 @@
             </div>
         </div>
     </div>
-    </iframe>
+    <!-- </iframe> -->
     <script>
         var currentSectionIndex = 8;
         var dispType = "double";
@@ -275,8 +275,8 @@
         }
         //fetch iFrame height and length
         function getiFrameRes(){
-            ih = $("#bookFrame").height();
-            iw = $("#bookFrame").width();
+            ih = $("#localiFrame").height();
+            iw = $("#localiFrame").width();
             console.log(ih, iw);
         }
         
