@@ -210,7 +210,7 @@
     <script>
         var currentSectionIndex = 8;
         var dispType = "double";
-        var h, w,ih,iw;
+        var h, w, ih, iw , adaptH, adaptW;
         window.addEventListener('resize', getResolution);
         getResolution();
         getiFrameRes();
@@ -223,8 +223,8 @@
             $("#flipbook").turn({
                 display: dispType,
                 // page: 2,
-                width: Math.round(h*0.75), //620,
-                height: h/2,
+                width:  adaptW, //Math.round(h*0.75), //620,
+                height: adaptH, //h/2,
                 autoCenter: false,
                 elevation: 50,
                 gradients: true,
@@ -255,6 +255,8 @@
 
         //fetch current screen width and height
         function getResolution() {
+            adaptW = parseInt(window.name)-20;
+            adpatH = adaptW * 1.1;
             h = window.screen.availHeight;
             w = window.screen.availWidth;
             //h = window.innerHeight;
@@ -265,6 +267,12 @@
                 dispType = "single";
             }else{
                 dispType = "double";
+            }
+
+            if(adaptW < 1024){
+                dispType = "single";
+            } else {
+                dispType = "double";            
             }
             // if (h > w) {
             //     dispType = "single";
