@@ -258,11 +258,17 @@
             //h = window.innerHeight;
             //w = window.innerWidth;
             console.log("width: " + w + " height: " + h);
-            if (h > w) {
+            
+            if(w < 1024){
                 dispType = "single";
-            } else {
+            }else{
                 dispType = "double";
             }
+            // if (h > w) {
+            //     dispType = "single";
+            // } else {
+            //     dispType = "double";
+            // }
             //initBook();
         }
         //fetch iFrame height and length
