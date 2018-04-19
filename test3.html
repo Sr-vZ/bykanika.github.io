@@ -255,14 +255,14 @@
 
         //fetch current screen width and height
         function getResolution() {
-            adaptW = parseInt(window.name)-20;
-            adpatH = adaptW * 1.1;
+            adaptW = parseInt(window.name)-100;
+            adpatH = adaptW * 1.3;
             h = window.screen.availHeight;
             w = window.screen.availWidth;
             //h = window.innerHeight;
             //w = window.innerWidth;
             console.log("width: " + w + " height: " + h);
-            
+            console.log("iframe width: " + adaptW + " iframe height: " + adaptH);
             if(w < 1024){
                 dispType = "single";
             }else{
