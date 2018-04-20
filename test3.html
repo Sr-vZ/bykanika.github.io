@@ -224,7 +224,7 @@
                 display: dispType,
                 // page: 2,
                 width: Math.round(h*0.75), //620,
-                height: h/2,
+                height: h/1.5,
                 autoCenter: false,
                 elevation: 50,
                 gradients: true,
@@ -257,10 +257,10 @@
         function getResolution() {
             adaptW = parseInt(window.name)-100;
             adpatH = adaptW * 1.3;
-            h = window.screen.availHeight;
-            w = window.screen.availWidth;
-            //h = window.innerHeight;
-            //w = window.innerWidth;
+            //h = window.screen.availHeight;
+            //w = window.screen.availWidth;
+            h = window.innerHeight;
+            w = window.innerWidth;
             console.log("width: " + w + " height: " + h);
             console.log("iframe width: " + adaptW + " iframe height: " + adaptH);
             if(w < 1024){
