@@ -154,8 +154,7 @@
 
         .paper {
             background: #fff;
-            box-shadow:
-            /* #888888,  */
+            box-shadow: /* #888888,  */
             /* The top layer shadow */
             1px 1px 1px rgba(0, 0, 0, 0.15),
             /* The second layer */
@@ -184,7 +183,7 @@
 </head>
 
 <body>
-<!-- <iframe id="localiFrame" scrolling="no" frameborder="0" scrolling="no" height="450px" width="900px"> -->
+    <!-- <iframe id="localiFrame" scrolling="no" frameborder="0" scrolling="no" height="450px" width="900px"> -->
     <div id="book-container" class="container-fluid h-100 align-items-center center-block">
         <div class="row h-100 clearfix align-items-center">
             <div class="col-md-1 col-xs-2 pagination-centered text-center">
@@ -210,7 +209,7 @@
     <script>
         var currentSectionIndex = 8;
         var dispType = "double";
-        var h, w, ih, iw , adaptH, adaptW;
+        var h, w, ih, iw, adaptH, adaptW;
         window.addEventListener('resize', getResolution);
         getResolution();
         getiFrameRes();
@@ -223,14 +222,14 @@
             $("#flipbook").turn({
                 display: dispType,
                 // page: 2,
-                width: Math.round(h*0.75), //620,
-                height: h/1.5,
+                width: adaptW, //Math.round(h*0.75), //620,
+                height: adaptH, //h/1.5,
                 autoCenter: false,
                 elevation: 50,
                 gradients: true,
                 duration: 1500,
                 // pages: 8,
-                accelration:true,
+                accelration: true,
                 when: {
                     start: function (event, pageObject, corner) {
                         if (pageObject.next == 1)
@@ -255,25 +254,34 @@
 
         //fetch current screen width and height
         function getResolution() {
-            adaptW = parseInt(window.name)-100;
+            adaptW = parseInt(window.name) - 100;
             adpatH = adaptW * 1.3;
             //h = window.screen.availHeight;
             //w = window.screen.availWidth;
             h = window.innerHeight;
             w = window.innerWidth;
+
+
+            adaptH = h /1.1;
+            adaptW = h * 0.75 * 2;
             console.log("width: " + w + " height: " + h);
             console.log("iframe width: " + adaptW + " iframe height: " + adaptH);
-            if(w < 1024){
+            if(isMobileDevice()){
                 dispType = "single";
             }else{
                 dispType = "double";
             }
+            // if (w < 960) {
+            //     dispType = "single";
+            // } else {
+            //     dispType = "double";
+            // }
 
-            if(adaptW < 1024){
-                dispType = "single";
-            } else {
-                dispType = "double";            
-            }
+            // if(adaptW < 1024){
+            //     dispType = "single";
+            // } else {
+            //     dispType = "double";            
+            // }
             // if (h > w) {
             //     dispType = "single";
             // } else {
@@ -282,12 +290,12 @@
             //initBook();
         }
         //fetch iFrame height and length
-        function getiFrameRes(){
+        function getiFrameRes() {
             ih = $("#localiFrame").height();
             iw = $("#localiFrame").width();
             console.log(ih, iw);
         }
-        
+
         // var module = {
         //     ratio: 1.38,
         //     init: function (id) {
@@ -342,6 +350,9 @@
         // };
 
         //module.init('flipbook');
+        function isMobileDevice() {
+            return (typeof window.orientation !== "undefined") || (navigator.userAgent.indexOf('IEMobile') !== -1);
+        };
     </script>
 
 </body>
