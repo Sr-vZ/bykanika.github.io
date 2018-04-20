@@ -184,8 +184,8 @@
 
 <body>
     <!-- <iframe id="localiFrame" scrolling="no" frameborder="0" scrolling="no" height="450px" width="900px"> -->
-    <div id="book-container" class="container-fluid h-95 align-items-center center-block">
-        <div class="row h-100 clearfix align-items-center">
+    <div id="book-container" class="container-fluid h-100 align-items-center center-block">
+        <div class="row h-95 clearfix align-items-center">
             <div class="col-md-1 col-xs-2 pagination-centered text-center">
                 <div class="text-center">
                     <button id="left-arrow" type="button" class="btn btn-lg">
@@ -265,16 +265,18 @@
             adaptH = h /1.1; //perfect for desktops
             adaptW = h * 1.5; //perfect for desktops
 
-            if(w < h){
-                adaptH = h/1.5;
-                adaptW = h * 0.75;
-            }
+            
             console.log("width: " + w + " height: " + h);
             console.log("iframe width: " + adaptW + " iframe height: " + adaptH);
             if(isMobileDevice()){
                 dispType = "single";
             }else{
                 dispType = "double";
+            }
+            if(w < h){
+                adaptH = h/1.5;
+                adaptW = h * 0.75;
+                dispType = "single";
             }
             // if (w < 960) {
             //     dispType = "single";
