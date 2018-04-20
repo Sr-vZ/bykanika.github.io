@@ -266,8 +266,7 @@
             adaptW = h * 1.5; //perfect for desktops
 
             
-            console.log("width: " + w + " height: " + h);
-            console.log("iframe width: " + adaptW + " iframe height: " + adaptH);
+            
             if(isMobileDevice()){
                 dispType = "single";
             }else{
@@ -278,6 +277,9 @@
                 adaptW = h * 0.75;
                 dispType = "single";
             }
+            console.log("width: " + w + " height: " + h);
+            console.log("adpative width: " + adaptW + " adpative height: " + adaptH);
+            console.log("display mode:" + dispType);
             // if (w < 960) {
             //     dispType = "single";
             // } else {
@@ -297,11 +299,11 @@
             //initBook();
         }
         //fetch iFrame height and length
-        function getiFrameRes() {
-            ih = $("#localiFrame").height();
-            iw = $("#localiFrame").width();
-            console.log(ih, iw);
-        }
+        // function getiFrameRes() {
+        //     ih = $("#localiFrame").height();
+        //     iw = $("#localiFrame").width();
+        //     console.log(ih, iw);
+        // }
 
         // var module = {
         //     ratio: 1.38,
