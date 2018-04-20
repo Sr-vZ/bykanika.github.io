@@ -262,8 +262,13 @@
             w = window.innerWidth;
 
 
-            adaptH = h /1.1;
-            adaptW = h * 0.75 * 2;
+            adaptH = h /1.1; //perfect for desktops
+            adaptW = h * 1.5; //perfect for desktops
+
+            if(w < h){
+                adaptH = h/1.5;
+                adaptW = h * 0.75;
+            }
             console.log("width: " + w + " height: " + h);
             console.log("iframe width: " + adaptW + " iframe height: " + adaptH);
             if(isMobileDevice()){
