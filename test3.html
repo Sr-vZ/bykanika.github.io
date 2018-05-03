@@ -208,6 +208,7 @@
     <!-- </iframe> -->
     <script>
         var currentSectionIndex = 8;
+        var is_iPad = navigator.userAgent.match(/iPad/i) != null;
         var dispType = "double";
         var h, w, ih, iw, adaptH, adaptW, startingPage;
         startingPage = 1;
@@ -270,7 +271,7 @@
             
             if(isMobileDevice()){
                 dispType = "single";
-                startingPage = 2
+                startingPage = 2;
             }else{
                 dispType = "double";
             }
@@ -280,6 +281,10 @@
                 adaptH = w * 1.3;
                 dispType = "single";
                 startingPage = 2;
+            }
+            if(is_iPad){
+                dispType = "double";
+                
             }
             console.log("width: " + w + " height: " + h);
             console.log("adpative width: " + adaptW + " adpative height: " + adaptH);
