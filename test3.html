@@ -234,6 +234,10 @@
                 accelration: true,
                 when: {
                     start: function (event, pageObject, corner) {
+                        if (dispType == 'single'){
+                            if (pageObject.next == 3)
+                                event.preventDefault();
+                        }
                         if (pageObject.next == 2)
                             event.preventDefault();
                     },
