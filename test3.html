@@ -193,7 +193,7 @@
                     </button>
                 </div>
             </div>
-            <div class="col-md-10-auto col-xs-8-auto mx-auto">
+            <div class="h-80 col-md-10-auto col-xs-8-auto mx-auto">
                 <div id="flipbook" class="book paper"></div>
             </div>
             <div class="col-md-1 col-xs-2 pagination-centered text-center">
@@ -282,7 +282,10 @@
             if(w < h){
                 
                 adaptW = w - 25;
-                adaptH = w * 1.3;
+                adaptH = w * 1.2;
+                if(adaptH >= 500){
+                    adaptH = 450;
+                }
                 dispType = "single";
                 startingPage = 3;
             }
@@ -293,85 +296,7 @@
             console.log("width: " + w + " height: " + h);
             console.log("adpative width: " + adaptW + " adpative height: " + adaptH);
             console.log("display mode:" + dispType);
-            // if (w < 960) {
-            //     dispType = "single";
-            // } else {
-            //     dispType = "double";
-            // }
-
-            // if(adaptW < 1024){
-            //     dispType = "single";
-            // } else {
-            //     dispType = "double";            
-            // }
-            // if (h > w) {
-            //     dispType = "single";
-            // } else {
-            //     dispType = "double";
-            // }
-            //initBook();
-        }
-        //fetch iFrame height and length
-        // function getiFrameRes() {
-        //     ih = $("#localiFrame").height();
-        //     iw = $("#localiFrame").width();
-        //     console.log(ih, iw);
-        // }
-
-        // var module = {
-        //     ratio: 1.38,
-        //     init: function (id) {
-        //         var me = this;
-
-        //         // if older browser then don't run javascript
-        //         if (document.addEventListener) {
-        //             this.el = document.getElementById(id);
-        //             this.resize();
-        //             this.plugins();
-
-        //             // on window resize, update the plugin size
-        //             window.addEventListener('resize', function (e) {
-        //                 var size = me.resize();
-        //                 $(me.el).turn('size', size.width, size.height);
-        //             });
-        //         }
-        //     },
-        //     resize: function () {
-        //         // reset the width and height to the css defaults
-        //         this.el.style.width = '';
-        //         this.el.style.height = '';
-
-        //         var width = this.el.clientWidth,
-        //             height = Math.round(width / this.ratio),
-        //             padded = Math.round(document.body.clientHeight * 0.9);
-
-        //         // if the height is too big for the window, constrain it
-        //         if (height > padded) {
-        //             height = padded;
-        //             width = Math.round(height * this.ratio);
-        //         }
-
-        //         // set the width and height matching the aspect ratio
-        //         this.el.style.width = width + 'px';
-        //         this.el.style.height = height + 'px';
-
-        //         return {
-        //             width: width,
-        //             height: height
-        //         };
-        //     },
-        //     plugins: function () {
-        //         // run the plugin
-        //         $(this.el).turn({
-        //             gradients: true,
-        //             acceleration: true
-        //         });
-        //         // hide the body overflow
-        //         document.body.className = 'hide-overflow';
-        //     }
-        // };
-
-        //module.init('flipbook');
+        }  
         function isMobileDevice() {
             return (typeof window.orientation !== "undefined") || (navigator.userAgent.indexOf('IEMobile') !== -1);
         };
