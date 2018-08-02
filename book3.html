@@ -355,6 +355,12 @@
                 dispType = "double";
 
             }
+            if (detectiPhone()) {
+                dispType = "single";
+                startingPage = 3;
+                adaptW = 370;
+                adaptH = adaptH * 1.2
+            }
             console.log("width: " + w + " height: " + h);
             console.log("adpative width: " + adaptW + " adpative height: " + adaptH);
             console.log("display mode:" + dispType);
@@ -371,6 +377,12 @@
         function isMobileDevice() {
             return (typeof window.orientation !== "undefined") || (navigator.userAgent.indexOf('IEMobile') !== -1);
         };
+
+        function detectiPhone() {
+            if ((navigator.userAgent.match(/iPhone/i)) || (navigator.userAgent.match(/iPod/i))) {
+                return true
+            }
+        }
     </script>
 
 </body>
