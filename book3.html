@@ -276,7 +276,7 @@
         window.addEventListener('resize', getResolution);
         getResolution();
         //getiFrameRes();
-        isBookloaded = false;
+        var isBookloaded = false;
         $("#flipbook").load(bookSrc, function () {
             initBook();
             isBookloaded = true
