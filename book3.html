@@ -355,7 +355,8 @@
             console.log("width: " + w + " height: " + h);
             console.log("adpative width: " + adaptW + " adpative height: " + adaptH);
             console.log("display mode:" + dispType);
-           
+            $("#flipbook").height(adaptH);
+            $("#flipbook").width(adaptW);
         }
 
         function isMobileDevice() {
