@@ -28,8 +28,9 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
         crossorigin="anonymous">
     <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css" rel="stylesheet">
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ" crossorigin="anonymous">
-    
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ"
+        crossorigin="anonymous">
+
     <style type="text/css">
         body {
             overflow: hidden;
@@ -216,7 +217,8 @@
             background-color: Transparent;
             /* padding: 10px; */
         }
-        #icons{
+
+        #icons {
             font-size: 6.5vw;
         }
     </style>
@@ -247,16 +249,16 @@
     </div> -->
     <!-- </iframe> -->
     <div id="book-container" class="book-container">
-        <div class="left-side" >
+        <div class="left-side">
             <button id="left-arrow" type="button" class="btn longButton">
                 <!-- <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span> -->
-                <span id="icons" class="fas fa-angle-left" aria-hidden="true"></span>            
+                <span id="icons" class="fas fa-angle-left" aria-hidden="true"></span>
             </button>
         </div>
         <div id="flipbook" class="middle paper">
 
         </div>
-        <div class="right-side" >
+        <div class="right-side">
             <button id="right-arrow" type="button" class="btn longButton">
                 <!-- <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span> -->
                 <span id="icons" class="fas fa-angle-right" aria-hidden="true"></span>
@@ -274,9 +276,10 @@
         window.addEventListener('resize', getResolution);
         getResolution();
         //getiFrameRes();
-
+        isBooklodaded = false;
         $("#flipbook").load(bookSrc, function () {
             initBook();
+            isBooklodaded = true
         });
 
         function initBook() {
@@ -357,8 +360,11 @@
             console.log("display mode:" + dispType);
             $("#flipbook").height(adaptH);
             $("#flipbook").width(adaptW);
-            // $("#flipbook").turn('display', dispType)
-            // $("#flipbook").turn('page', startingPage)
+            if (isBooklodaded) {
+                $("#flipbook").turn('display', dispType)
+                $("#flipbook").turn('page', startingPage)
+            }
+
             self.location.reload()
         }
 
