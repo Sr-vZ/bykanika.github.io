@@ -276,10 +276,10 @@
         window.addEventListener('resize', getResolution);
         getResolution();
         //getiFrameRes();
-        isBooklodaded = false;
+        isBookloaded = false;
         $("#flipbook").load(bookSrc, function () {
             initBook();
-            isBooklodaded = true
+            isBookloaded = true
         });
 
         function initBook() {
@@ -360,7 +360,7 @@
             console.log("display mode:" + dispType);
             $("#flipbook").height(adaptH);
             $("#flipbook").width(adaptW);
-            if (isBooklodaded) {
+            if (isBookloaded) {
                 $("#flipbook").turn('display', dispType)
                 $("#flipbook").turn('page', startingPage)
             }
