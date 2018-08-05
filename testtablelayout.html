@@ -276,10 +276,10 @@
                     when: {
                         start: function (event, pageObject, corner) {
                             if (dispType == 'single') {
-                                if (pageObject.next == 3)
+                                if (pageObject.next == 1)
                                     event.preventDefault();
                             }
-                            if (pageObject.next == 2)
+                            if (pageObject.next == 1)
                                 event.preventDefault();
                         },
                         turning: function (event, page, view) {
@@ -294,9 +294,11 @@
             // onclick behavior for side buttons
             $("#left-arrow").on('click', function () {
                 $('#flipbook').turn('previous');
+                console.log($("#flipbook").turn("page"))
             })
             $("#right-arrow").on('click', function () {
                 $('#flipbook').turn('next');
+                console.log($("#flipbook").turn("page"))
             })
 
             //fetch current screen width and height
