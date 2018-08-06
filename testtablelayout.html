@@ -199,29 +199,85 @@
         #icons {
             font-size: 6.5vw;
         }
+
+        .left-overlay {
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 100%;
+            width: 50%;
+            opacity: 0;
+            transition: .5s ease;
+            background-color: #008CBA;
+        }
+
+        .right-overlay {
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            left: 50%;
+            right: 0;
+            height: 100%;
+            width: 50%;
+            opacity: 0;
+            transition: .5s ease;
+            background-color: #008CBA;
+        }
+
+        /* .mobile-container {
+            position: relative;
+            width: 100%;
+        } */
+
+        .mobile-container:hover .left-overlay {
+            opacity: 1;
+        }
     </style>
 </head>
 
 <body>
 
     <div id="book-container" class="book-container">
-        <div class="left-side" >
+        <div class="left-side">
             <button id="left-arrow" type="button" class="btn longButton">
-                
+
                 <span id="icons" class="fas fa-angle-left" aria-hidden="true"></span>
             </button>
         </div>
         <div id="flipbook" class="middle paper">
 
         </div>
-        <div class="right-side" >
+        <div class="right-side">
             <button id="right-arrow" type="button" class="btn longButton">
-                
+
                 <span id="icons" class="fas fa-angle-right" aria-hidden="true"></span>
             </button>
         </div>
     </div>
+    <div id="mobile-container" class="mobile-container">
+        <div class="row h-100 align-items-center">
+            <div class="col ">
+                <div class="container-fluid">
+                    <div id="flipbook-mobile" class="paper"></div>
+                    <div class="left-overlay">
+                        <button id="left-arrow" type="button" class="btn longButton">
 
+                            <span id="icons" class="fas fa-angle-left" aria-hidden="true"></span>
+                        </button>
+                    </div>
+                    <div class="right-overlay">
+                        <button id="right-arrow" type="button" class="btn longButton">
+
+                            <span id="icons" class="fas fa-angle-right" aria-hidden="true"></span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
     <!-- <div class="container">
         <div class="" style="display: table;text-align: center;
         vertical-align: middle;">
@@ -247,106 +303,111 @@
             </div>
         </div> -->
 
-        <script>
-            bookSrc = "./books/Book_4_Low/OEBPS/Book-2-check.xhtml"; //book4 source
+    <script>
+        bookSrc = "./books/Book_4_Low/OEBPS/Book-2-check.xhtml"; //book4 source
 
-            var currentSectionIndex = 8;
-            var is_iPad = navigator.userAgent.match(/iPad/i) != null;
-            var dispType = "double";
-            var h, w, ih, iw, adaptH, adaptW, startingPage;
-            startingPage = 1;
-            window.addEventListener('resize', getResolution);
-            getResolution();
-            //getiFrameRes();
+        var currentSectionIndex = 8;
+        var is_iPad = navigator.userAgent.match(/iPad/i) != null;
+        var dispType = "double";
+        var h, w, ih, iw, adaptH, adaptW, startingPage;
+        startingPage = 1;
+        window.addEventListener('resize', getResolution);
+        getResolution();
+        //getiFrameRes();
 
-            $("#flipbook").load(bookSrc, function () {
-                initBook();
-            });
+        $("#flipbook").load(bookSrc, function () {
+            initBook('#flipbook');
+        });
 
-            function initBook() {
-                $("#flipbook").turn({
-                    display: dispType,
-                    page: startingPage,
-                    width: adaptW, //Math.round(h*0.75), //620,
-                    height: adaptH, //h/1.5,
-                    autoCenter: false,
-                    elevation: 50,
-                    gradients: true,
-                    duration: 1500,
-                    // pages: 8,
-                    accelration: true,
-                    when: {
-                        start: function (event, pageObject, corner) {
-                            if (dispType == 'single') {
-                                if (pageObject.next == 1)
-                                    event.preventDefault();
-                            }
+        function initBook(element) {
+            $(element).turn({
+                display: dispType,
+                page: startingPage,
+                width: adaptW, //Math.round(h*0.75), //620,
+                height: adaptH, //h/1.5,
+                autoCenter: false,
+                elevation: 50,
+                gradients: true,
+                duration: 1500,
+                // pages: 8,
+                accelration: true,
+                when: {
+                    start: function (event, pageObject, corner) {
+                        if (dispType == 'single') {
                             if (pageObject.next == 1)
                                 event.preventDefault();
-                        },
-                        turning: function (event, page, view) {
-                            if (page == 1)
-                                event.preventDefault();
-                            if (page == 12)
-                                event.preventDefault();
                         }
+                        if (pageObject.next == 1)
+                            event.preventDefault();
+                    },
+                    turning: function (event, page, view) {
+                        if (page == 1)
+                            event.preventDefault();
+                        if (page == 12)
+                            event.preventDefault();
                     }
+                }
+            });
+        }
+        // onclick behavior for side buttons
+        $("#left-arrow").on('click', function () {
+            $('#flipbook').turn('previous');
+            console.log($("#flipbook").turn("page"))
+        })
+        $("#right-arrow").on('click', function () {
+            $('#flipbook').turn('next');
+            console.log($("#flipbook").turn("page"))
+        })
+
+        //fetch current screen width and height
+        function getResolution() {
+            adaptW = parseInt(window.name) - 100;
+            adpatH = adaptW * 1.3;
+            //h = window.screen.availHeight;
+            //w = window.screen.availWidth;
+            h = window.innerHeight;
+            w = window.innerWidth;
+
+
+            adaptH = h / 1.1; //perfect for desktops
+            adaptW = h * 1.5; //perfect for desktops
+
+
+
+            if (isMobileDevice()) {
+                dispType = "single";
+                startingPage = 3;
+                $('#book-container').hide()
+                $('#mobile-container').show()
+                $("#flipbook-mobile").load(bookSrc, function () {
+                    initBook("#flipbook-mobile");
                 });
+            } else {
+                dispType = "double";
             }
-            // onclick behavior for side buttons
-            $("#left-arrow").on('click', function () {
-                $('#flipbook').turn('previous');
-                console.log($("#flipbook").turn("page"))
-            })
-            $("#right-arrow").on('click', function () {
-                $('#flipbook').turn('next');
-                console.log($("#flipbook").turn("page"))
-            })
+            if (w < h) {
 
-            //fetch current screen width and height
-            function getResolution() {
-                adaptW = parseInt(window.name) - 100;
-                adpatH = adaptW * 1.3;
-                //h = window.screen.availHeight;
-                //w = window.screen.availWidth;
-                h = window.innerHeight;
-                w = window.innerWidth;
-
-
-                adaptH = h / 1.1; //perfect for desktops
-                adaptW = h * 1.5; //perfect for desktops
-
-
-
-                if (isMobileDevice()) {
-                    dispType = "single";
-                    startingPage = 3;
-                } else {
-                    dispType = "double";
+                adaptW = w - 25;
+                adaptH = w * 1.2;
+                if (adaptH >= 500) {
+                    adaptH = 450;
                 }
-                if (w < h) {
-
-                    adaptW = w - 25;
-                    adaptH = w * 1.2;
-                    if (adaptH >= 500) {
-                        adaptH = 450;
-                    }
-                    dispType = "single";
-                    startingPage = 3;
-                }
-                if (is_iPad) {
-                    dispType = "double";
-
-                }
-                console.log("width: " + w + " height: " + h);
-                console.log("adpative width: " + adaptW + " adpative height: " + adaptH);
-                console.log("display mode:" + dispType);
+                dispType = "single";
+                startingPage = 3;
             }
+            if (is_iPad) {
+                dispType = "double";
 
-            function isMobileDevice() {
-                return (typeof window.orientation !== "undefined") || (navigator.userAgent.indexOf('IEMobile') !== -1);
-            };
-        </script>
+            }
+            console.log("width: " + w + " height: " + h);
+            console.log("adpative width: " + adaptW + " adpative height: " + adaptH);
+            console.log("display mode:" + dispType);
+        }
+
+        function isMobileDevice() {
+            return (typeof window.orientation !== "undefined") || (navigator.userAgent.indexOf('IEMobile') !== -1);
+        };
+    </script>
 
 </body>
 
