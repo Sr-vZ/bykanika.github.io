@@ -465,7 +465,7 @@
 
 
 
-            if (isMobileDevice()) {
+            if (isMobileDevice() && detectOrientation() === 'portrait') {
                 dispType = "single";
                 startingPage = 3;
                 $('#book-container').hide()
@@ -513,6 +513,13 @@
             } else {
                 return false;
             }
+        }
+
+        function detectOrientation() {
+            if (window.matchMedia("(orientation:portrait)").matches)
+                return "portrait";
+            if (window.matchMedia("(orientation:landscape)").matches)
+                return "landscape";
         }
     </script>
 
