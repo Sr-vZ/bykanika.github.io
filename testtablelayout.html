@@ -388,7 +388,12 @@
         $("#flipbook").load(bookSrc, function () {
             initBook('#flipbook');
         });
-
+        window.addEventListener("orientationchange", function () {
+            // alert("the orientation of the device is now " + screen.orientation.angle);
+            console.log('orientation changed: '+detectOrientation())
+            // getResolution()
+            location.reload();
+        });
         function initBook(element) {
             $(element).turn({
                 display: dispType,
@@ -521,6 +526,7 @@
             if (window.matchMedia("(orientation:landscape)").matches)
                 return "landscape";
         }
+        
     </script>
 
 </body>
