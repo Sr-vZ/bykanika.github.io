@@ -390,10 +390,11 @@
         });
         window.addEventListener("orientationchange", function () {
             // alert("the orientation of the device is now " + screen.orientation.angle);
-            console.log('orientation changed: '+detectOrientation())
+            console.log('orientation changed: ' + detectOrientation())
             // getResolution()
             location.reload();
         });
+
         function initBook(element) {
             $(element).turn({
                 display: dispType,
@@ -469,32 +470,12 @@
             adaptW = h * 1.5; //perfect for desktops
 
 
-
-            if (isMobileDevice() && detectOrientation() === 'portrait') {
-                dispType = "single";
-                startingPage = 3;
-                $('#book-container').hide()
-                $('#mobile-container').show()
-                $("#flipbook-mobile").load(bookSrc, function () {
-                    initBook("#flipbook-mobile");
-                });
-            }else if(isMobileDevice() && detectOrientation() === 'landscape'){
-                dispType = "double"
-                $('#book-container').hide()
-                $('#mobile-container').show()
-                $("#flipbook-mobile").load(bookSrc, function () {
-                    initBook("#flipbook-mobile");
-                });
-            } 
-            else {
-                dispType = "double";
-            }
             if (w < h) {
 
                 adaptW = w - 25;
                 adaptH = w * 1.2;
                 if (adaptH >= 500) {
-                    adaptH = 410;
+                    adaptH = 450;
                 }
                 dispType = "single";
                 startingPage = 3;
@@ -503,6 +484,27 @@
                 dispType = "double";
 
             }
+            if (isMobileDevice() && detectOrientation() === 'portrait') {
+                dispType = "single";
+                startingPage = 3;
+                $('#book-container').hide()
+                $('#mobile-container').show()
+                $("#flipbook-mobile").load(bookSrc, function () {
+                    initBook("#flipbook-mobile");
+                });
+            } else if (isMobileDevice() && detectOrientation() === 'landscape') {
+                dispType = "double"
+                adaptH = 450;
+                adaptW = w-70;
+                $('#book-container').hide()
+                $('#mobile-container').show()
+                $("#flipbook-mobile").load(bookSrc, function () {
+                    initBook("#flipbook-mobile");
+                });
+            } else {
+                dispType = "double";
+            }
+
             console.log("width: " + w + " height: " + h);
             console.log("adpative width: " + adaptW + " adpative height: " + adaptH);
             console.log("display mode:" + dispType);
@@ -534,7 +536,6 @@
             if (window.matchMedia("(orientation:landscape)").matches)
                 return "landscape";
         }
-        
     </script>
 
 </body>
