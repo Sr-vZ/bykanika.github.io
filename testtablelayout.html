@@ -478,7 +478,15 @@
                 $("#flipbook-mobile").load(bookSrc, function () {
                     initBook("#flipbook-mobile");
                 });
-            } else {
+            }else if(isMobileDevice() && detectOrientation() === 'landscape'){
+                dispType = "double"
+                $('#book-container').hide()
+                $('#mobile-container').show()
+                $("#flipbook-mobile").load(bookSrc, function () {
+                    initBook("#flipbook-mobile");
+                });
+            } 
+            else {
                 dispType = "double";
             }
             if (w < h) {
