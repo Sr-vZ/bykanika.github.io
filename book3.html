@@ -12,15 +12,9 @@
 
 
     <script src="js/libs/jquery.min.js"></script>
-    <!-- <script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script> -->
-    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script> -->
-    <!-- <script src="js/libs/zip.min.js"></script> -->
-    <!-- <script src="js/epub.min.js"></script> -->
-    <script src="js/libs/turn.js"></script>
-    <!-- <link rel="stylesheet" href="css/steve-jobs.css"> -->
 
-    <!-- <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
-        crossorigin="anonymous"></script> -->
+    <script src="js/libs/turn.js"></script>
+
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
         crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
@@ -30,20 +24,14 @@
     <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css" rel="stylesheet">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ"
         crossorigin="anonymous">
-
     <style type="text/css">
         body {
             overflow: hidden;
             /* background: #c9cdcf; */
         }
 
-        body.hide-overflow {
-            /* overflow: hidden; */
-        }
 
-        /* helpers */
 
-        /* book */
 
         .book {
             /* margin: 0 auto;
@@ -73,17 +61,10 @@
             /* border: 2px solid black; */
         }
 
-        /* .container {
-            margin: auto;
-            width: fit-content;
-            border: 3px solid grey;
-            padding: 10px;
-        } */
 
         .arrow {
             position: absolute;
-            /* top: 50%;
-            margin-top: -32px; */
+
             font-size: 60px;
             color: #E2E2E2;
             font-family: arial, sans-serif;
@@ -123,12 +104,9 @@
         }
 
         .book-container {
-            /* margin:auto; */
-            /* width: auto; */
-            /* border: 3px solid grey; */
-            /* padding: 10px; */
-            /* display: flex;
-            flex-direction: row; */
+
+            display: flex;
+            flex-direction: row;
             align-items: center;
             justify-content: center;
             padding: 10px;
@@ -191,27 +169,27 @@
 
         .right-side {
             /* flex-grow: 2 */
-            /* flex: 1; */
+            flex: 0.25;
             align-items: center;
             justify-content: center;
         }
 
         .left-side {
             /* flex-grow: 2 */
-            /* flex: 1; */
+            flex: 0.25;
             align-items: center;
             justify-content: center;
         }
 
         .middle {
             /* flex-grow: 6 */
-            /* flex: 8; */
+            flex: 9.5%;
             align-items: center;
             justify-content: center;
         }
 
         .longButton {
-            height: 100%;
+            /* height: 100%; */
             height: 300px;
             width: 100%;
             background-color: Transparent;
@@ -221,37 +199,115 @@
         #icons {
             font-size: 6.5vw;
         }
+
+        #icons-mobile {
+            font-size: 6.5vw;
+            /* align-self: center; */
+            /* display:inline-block;
+            vertical-align: middle;  */
+            /* top:50%; */
+            position: absolute;
+            top: 50%;
+            /* left: 10%; */
+            /* width: 100%; */
+            /* height: 100px; */
+            -webkit-transform: translate(-50%, -50%);
+            transform: translate(-50%, -50%);
+            /* background: red; */
+        }
+
+        .left-overlay {
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 100%;
+            width: 50%;
+            opacity: 0;
+            transition: .5s ease;
+            background-color: #008CBA;
+        }
+
+        .right-overlay {
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            left: 50%;
+            right: 0;
+            height: 100%;
+            width: 50%;
+            opacity: 0;
+            transition: .5s ease;
+            background-color: #008CBA;
+        }
+
+        /* .mobile-container {
+            position: relative;
+            width: 100%;
+        } */
+
+        .mobile-container:hover .left-overlay {
+            opacity: 1;
+        }
+
+        /* Split the screen in half */
+
+        .split {
+            height: 100%;
+            width: 50%;
+            position: absolute;
+            z-index: 99;
+            top: 0;
+            /* overflow-x: hidden; */
+            /* padding-top: 20px; */
+        }
+
+        /* Control the left side */
+
+        .left {
+            left: 0;
+            background-color: transparent;
+            /* opacity: 0.2; */
+        }
+
+        /* Control the right side */
+
+        .right {
+            right: 0;
+            background-color: transparent;
+            /* opacity: 0.2; */
+        }
+
+        #right-arrow-mobile>span {
+            position: absolute;
+            top: 50%;
+            padding-right: 10%;
+            /* width: 100%; */
+            /* height: 100px; */
+            -webkit-transform: translate(-50%, -50%);
+            transform: translate(-50%, -50%);
+            /* background: red; */
+        }
+
+        #left-arrow-mobile>span {
+            position: absolute;
+            top: 50%;
+            padding-left: 10%;
+            /* width: 100%; */
+            /* height: 100px; */
+            -webkit-transform: translate(-50%, -50%);
+            transform: translate(-50%, -50%);
+            /* background: red; */
+        }
     </style>
 </head>
 
 <body>
-    <!-- <iframe id="localiFrame" scrolling="no" frameborder="0" scrolling="no" height="450px" width="900px"> -->
-        <div id="book-container" class="container-fluid h-100 align-items-center center-block">
-        <div class="row h-100 clearfix align-items-center">
-            <div class="col-md-1 col-xs-1 pagination-centered text-center">
-                <div class="text-center">
-                    <button id="left-arrow" type="button" class="btn btn-lg">
-                        <span id="icons" class="fas fa-angle-left" aria-hidden="true"></span>
-                    </button>
-                </div>
-            </div>
-            <div class="h-80 col-md-10-auto col-xs-10-auto mx-auto">
-                <div id="flipbook" class="book paper"></div>
-            </div>
-            <div class="col-md-1 col-xs-1 pagination-centered text-center">
-                <div class="text-center">
-                    <button id="right-arrow" type="button" class="btn btn-lg">
-                        <span id="icons" class="fas fa-angle-right" aria-hidden="true"></span>
-                    </button>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- </iframe> -->
-    <!-- <div id="book-container" class="book-container">
+
+    <div id="book-container" class="book-container">
         <div class="left-side">
             <button id="left-arrow" type="button" class="btn longButton">
-                
                 <span id="icons" class="fas fa-angle-left" aria-hidden="true"></span>
             </button>
         </div>
@@ -260,30 +316,87 @@
         </div>
         <div class="right-side">
             <button id="right-arrow" type="button" class="btn longButton">
-                
                 <span id="icons" class="fas fa-angle-right" aria-hidden="true"></span>
             </button>
         </div>
-    </div> -->
+    </div>
+    <div id="mobile-container" class="mobile-container">
+        <div class="row h-100 align-items-center">
+            <div class="col ">
+                <div class="container-fluid" style="position: fixed;">
+                    <div id="flipbook-mobile" class="paper"></div>
+                    <div class="split left" id="left-arrow-mobile">
+
+                        <!-- <span id="icons" class="fas fa-angle-left" aria-hidden="true"></span> -->
+
+                        <!-- <button id="left-arrow" type="button" class="btn longButton">
+                            <span id="icons" class="fas fa-angle-left" aria-hidden="true"></span>
+                        </button> -->
+                    </div>
+                    <div class="split right" id="right-arrow-mobile">
+
+                        <!-- <span id="icons" class="fas fa-angle-right" aria-hidden="true"></span> -->
+
+
+                        <!-- <button id="right-arrow" type="button" class="btn longButton">
+                            <span id="icons" class="fas fa-angle-right" aria-hidden="true"></span>
+                        </button> -->
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <!-- <div class="container">
+        <div class="" style="display: table;text-align: center;
+        vertical-align: middle;">
+            <div style="display: table-row;text-align: center;
+            vertical-align: middle;">
+                <div style="display: table-cell;text-align: center;
+                vertical-align: middle;">
+                    <button id="left-arrow" type="button" class="btn longButton">
+                        <span id="icons" class="fas fa-angle-left" aria-hidden="true"></span>
+                    </button>
+                </div>
+                <div style="display: table-cell;">
+                    <div id="flipbook" class="middle paper">
+                    </div>
+                    </div>
+                    <div style="display: table-cell;text-align: center;
+                    vertical-align: middle;">
+                        <button id="right-arrow" type="button" class="btn longButton">
+                            <span id="icons" class="fas fa-angle-right" aria-hidden="true"></span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div> -->
 
     <script>
-        bookSrc = "./books/book3_pagefixed/OEBPS/Book-3-low.xhtml"; //book3 source
+        bookSrc = "./books/Book_3_Low/OEBPS/Book-3-low.xhtml"; //book4 source        
+        // $('#book-container').hide()
+        $('#mobile-container').hide()
         var currentSectionIndex = 8;
         var is_iPad = navigator.userAgent.match(/iPad/i) != null;
         var dispType = "double";
         var h, w, ih, iw, adaptH, adaptW, startingPage;
-        startingPage = 1;
+        startingPage = 3;
         window.addEventListener('resize', getResolution);
         getResolution();
         //getiFrameRes();
-        var isBookloaded = false;
+
         $("#flipbook").load(bookSrc, function () {
-            initBook();
-            isBookloaded = true
+            initBook('#flipbook');
+        });
+        window.addEventListener("orientationchange", function () {
+            // alert("the orientation of the device is now " + screen.orientation.angle);
+            console.log('orientation changed: ' + detectOrientation())
+            // getResolution()
+            location.reload();
         });
 
-        function initBook() {
-            $("#flipbook").turn({
+        function initBook(element) {
+            $(element).turn({
                 display: dispType,
                 page: startingPage,
                 width: adaptW, //Math.round(h*0.75), //620,
@@ -297,10 +410,10 @@
                 when: {
                     start: function (event, pageObject, corner) {
                         if (dispType == 'single') {
-                            if (pageObject.next == 3)
+                            if (pageObject.next == 1)
                                 event.preventDefault();
                         }
-                        if (pageObject.next == 2)
+                        if (pageObject.next == 1)
                             event.preventDefault();
                     },
                     turning: function (event, page, view) {
@@ -315,9 +428,32 @@
         // onclick behavior for side buttons
         $("#left-arrow").on('click', function () {
             $('#flipbook').turn('previous');
+            console.log($("#flipbook").turn("page"))
         })
+
         $("#right-arrow").on('click', function () {
             $('#flipbook').turn('next');
+            console.log($("#flipbook").turn("page"))
+        })
+
+        /* $("#left-arrow").click(function () {
+            //do something
+            $('#flipbook').turn('previous');
+            console.log($("#flipbook").turn("page"))
+        });
+
+        $("#right-arrow").click(function () {
+            $('#flipbook').turn('next');
+            console.log($("#flipbook").turn("page"))
+        }) */
+        $("#left-arrow-mobile").on('click', function () {
+            $('#flipbook-mobile').turn('previous');
+            console.log($("#flipbook-mobile").turn("page"))
+        })
+
+        $("#right-arrow-mobile").on('click', function () {
+            $('#flipbook-mobile').turn('next');
+            console.log($("#flipbook-mobile").turn("page"))
         })
 
         //fetch current screen width and height
@@ -334,13 +470,6 @@
             adaptW = h * 1.5; //perfect for desktops
 
 
-
-            if (isMobileDevice()) {
-                dispType = "single";
-                startingPage = 3;
-            } else {
-                dispType = "double";
-            }
             if (w < h) {
 
                 adaptW = w - 25;
@@ -355,23 +484,30 @@
                 dispType = "double";
 
             }
-            if (detectiPhone()) {
+            if (isMobileDevice() && detectOrientation() === 'portrait') {
                 dispType = "single";
                 startingPage = 3;
-                adaptW = 370;
-                adaptH = adaptH * 1.2
+                $('#book-container').hide()
+                $('#mobile-container').show()
+                $("#flipbook-mobile").load(bookSrc, function () {
+                    initBook("#flipbook-mobile");
+                });
+            } else if (isMobileDevice() && detectOrientation() === 'landscape') {
+                dispType = "double"
+                adaptH = 450;
+                adaptW = w-70;
+                $('#book-container').hide()
+                $('#mobile-container').show()
+                $("#flipbook-mobile").load(bookSrc, function () {
+                    initBook("#flipbook-mobile");
+                });
+            } else {
+                dispType = "double";
             }
+
             console.log("width: " + w + " height: " + h);
             console.log("adpative width: " + adaptW + " adpative height: " + adaptH);
             console.log("display mode:" + dispType);
-            $("#flipbook").height(adaptH);
-            $("#flipbook").width(adaptW);
-            if (isBookloaded) {
-                $("#flipbook").turn('display', dispType)
-                $("#flipbook").turn('page', startingPage)
-            }
-
-            // self.location.reload()
         }
 
         function isMobileDevice() {
@@ -379,25 +515,27 @@
             return detectmob();
         };
 
-        function detectiPhone() {
-            if ((navigator.userAgent.match(/iPhone/i)) || (navigator.userAgent.match(/iPod/i))) {
-                return true
+        function detectmob() {
+            if (navigator.userAgent.match(/Android/i) ||
+                navigator.userAgent.match(/webOS/i) ||
+                navigator.userAgent.match(/iPhone/i) ||
+                navigator.userAgent.match(/iPad/i) ||
+                navigator.userAgent.match(/iPod/i) ||
+                navigator.userAgent.match(/BlackBerry/i) ||
+                navigator.userAgent.match(/Windows Phone/i)
+            ) {
+                return true;
+            } else {
+                return false;
             }
         }
-        function detectmob() {
-                if (navigator.userAgent.match(/Android/i) ||
-                    navigator.userAgent.match(/webOS/i) ||
-                    navigator.userAgent.match(/iPhone/i) ||
-                    navigator.userAgent.match(/iPad/i) ||
-                    navigator.userAgent.match(/iPod/i) ||
-                    navigator.userAgent.match(/BlackBerry/i) ||
-                    navigator.userAgent.match(/Windows Phone/i)
-                ) {
-                    return true;
-                } else {
-                    return false;
-                }
-            }
+
+        function detectOrientation() {
+            if (window.matchMedia("(orientation:portrait)").matches)
+                return "portrait";
+            if (window.matchMedia("(orientation:landscape)").matches)
+                return "landscape";
+        }
     </script>
 
 </body>
