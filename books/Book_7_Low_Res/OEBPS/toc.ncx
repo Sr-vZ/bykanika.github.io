@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE ncx PUBLIC "-//NISO//DTD ncx 2005-1//EN" "http://www.daisy.org/z3986/2005/ncx-2005-1.dtd">
+<ncx xmlns="http://www.daisy.org/z3986/2005/ncx/" version="2005-1">
+	<head>
+		<meta name="dtb:uid" content="urn:uuid:99bcbcdd-d802-419a-a2c9-c01b4e7e573f" />
+		<meta name="dtb:depth" content="0" />
+		<meta name="dtb:totalPageCount" content="0" />
+		<meta name="dtb:maxPageNumber" content="0" />
+	</head>
+	<docTitle>
+		<text>Book_7_Low_Res</text>
+	</docTitle>
+	<navMap>
+		<navPoint id="navpoint1" playOrder="1">
+			<navLabel>
+				<text>Book-3-low</text>
+			</navLabel>
+			<content src="Book-3-low.xhtml" />
+		</navPoint>
+	</navMap>
+</ncx>
